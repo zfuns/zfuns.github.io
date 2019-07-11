@@ -1,0 +1,164 @@
+---
+title: hexo开启Mathjax语法渲染配置折腾记
+comments: true
+date: 2019-04-30 23:25:52
+tags: 
+- hexo配置 
+- 开启mathjax  Latex
+- 数学公式
+- 化学工式
+- 主题样式
+categories: 
+- 软件应用
+mathjax: true
+markup: mmark
+---
+
+Mathjax介绍
+====
+&emsp;&emsp; hexo 中不能用 Latex 语法来书写数学公式，这对于书写学术博客来说是很大的不便，因为我们会经常碰到很多的数学公式推导，但是我们可以通过安装第三方库来解决这一问题。
+
+1 安装Mathjax插件
+```
+npm install hexo-renderer-marked --save
+npm install hexo-math --save
+```
+2 如果安装了~~npm install hexo-renderer-pandoc~~会报错要卸载
+卸载
+```
+npm uninstall hexo-renderer-pandoc
+```
+测试一下
+```
+hexo clean && hexo g -d
+```
+数学工式可以正常显示，就是Setext 形式标题不能显示，下面测试
+2配置主题
+开启mathjax
+![](https://pngurl-1259065437.cos.ap-shenzhen-fsi.myqcloud.com/%E5%8D%9A%E5%AE%A2%E9%A2%98%E5%BA%93/Screenshot_20190501-224555.jpg?q-sign-algorithm=sha1&q-ak=AKIDyZc55Lxv1AeOVtVHunezvIIbGNRbegeb&q-sign-time=1556722041;1556723841&q-key-time=1556722041;1556723841&q-header-list=&q-url-param-list=&q-signature=e2b0648d59f5687281fd5ea6d31a6550160a4e3c&x-cos-security-token=cf4680093a0b9d35064cbb01c7382bafa5c9873f10001)
+
+~~3使用编辑器修改改myblog/node_modules/marked/lib/marked.js转义规则
+escape: /^\\([\\`*{}\[\]()#$+\-.!_>])/,
+修改为
+escape: /^\\([`*\[\]()# +\-.!_>])/,
+继续
+em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+修改
+em:/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,~~
+反复折腾了好几次都没有成功，就上面安装2个插件就成功了
+
+4文章中开启**mathjax**
+>---
+title: 
+category:
+date: 
+>mathjax: true~~
+
+<escape><!-- more --></escape>
+
+测试mathjax
+----
+###麦克斯韦方程组
+```
+$$
+\begin{eqnarray}
+\nabla\cdot\vec{E} &=& \frac{\rho}{\epsilon_0} \\
+\nabla\cdot\vec{B} &=& 0 \\
+\nabla\times\vec{E} &=& -\frac{\partial B}{\partial t} \\
+\nabla\times\vec{B} &=& \mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t} \right)
+\end{eqnarray}
+$$
+```
+$$
+\begin{eqnarray}
+\nabla\cdot\vec{E} &=& \frac{\rho}{\epsilon_0} \\
+\nabla\cdot\vec{B} &=& 0 \\
+\nabla\times\vec{E} &=& -\frac{\partial B}{\partial t} \\
+\nabla\times\vec{B} &=& \mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t} \right)
+\end{eqnarray}
+$$
+
+```
+$$\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.$$
+```
+$$\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.$$
+
+```
+$$
+\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)
+$$
+```
+
+$$
+\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)
+$$
+
+```
+ $$ 
+f(n)=\begin{cases}
+n/2, & \text{如果$ x<=2 $}\\
+3n+1, & \text{如果$ x>2 $}
+\end{cases}
+$$
+```
+
+ $$ 
+f(n)=\begin{cases}
+n/2, & \text{如果$ x<=2 $}\\
+3n+1, & \text{如果$ x>2 $}
+\end{cases}
+$$
+
+
+标题Latex特性测试
+----
+1. Setext 形式
+----
+```
+H1
+====
+
+H2
+----
+```
+H1
+====
+
+H2
+----
+
+= 和 - 的数量是没有限制的。通常的做法是使其和标题文本的长度相同，这样看起来比较舒服。或者可以像我一样，用四个 - 或 =。
+Setext 形式只支持 h1 和 h2 两种标题。
+
+2. atx 形式
+ #####① 可以用对称的 # 包括文本：#####
+```
+####H4####
+
+#####H5#####
+```
+####H4####
+
+#####H5#####
+
+
+##### ② 也可以只在左边使用 #：
+```
+####H4
+
+#####H5
+```
+####H4
+
+#####H5
+
+
+③ 成对的 # 左侧和只在左边使用的 # 左侧都不可以有任何空白，但其内侧可以使用空白。
+```
+ ###左侧使用了空格###
+
+#### 内侧使用了空格
+```
+ ###左侧使用了空格###
+
+#### 内侧使用了空格
