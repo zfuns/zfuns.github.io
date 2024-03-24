@@ -1,0 +1,53 @@
+.back-to-top {
+  background: #fff;
+  bottom: 60px;
+  right: -30px;
+  text-align:center;
+  box-sizing: border-box;
+  color: #222;
+  cursor: pointer;
+  opacity: 1;
+  padding: 0 5px;
+  position: fixed;
+  transition: right 1s;
+  z-index: 9999;
+  line-height: 26px;
+  width: 28px;
+  height: 26px;
+  border-radius:3px 0 0 3px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+
+  span {
+      display: none;
+    }
+
+  &:hover {
+      color: #fff;
+      background:#0066cb;
+  }
+
+  &.back-to-top-on {
+    right: 0px;
+  }
+
+}
+
+.cog {
+    position: fixed;
+    background: #fff;
+    color:#222;
+    bottom:100px;
+    line-height:26px;
+    text-align:center;
+    z-index: 9999;
+    right:0px;
+    width:28px;
+    height:26px;
+    font-size:14px;
+    border-radius:3px 0 0 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    &:hover,&:focus {
+        background:#0066cb;
+        color:#fff;
+    }
+}

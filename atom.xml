@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>FUNS</title>
+  
+  
+  <link href="https://xda.plus/atom.xml" rel="self"/>
+  
+  <link href="https://xda.plus/"/>
+  <updated>2024-03-24T02:36:17.488Z</updated>
+  <id>https://xda.plus/</id>
+  
+  <author>
+    <name>zfuns</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>openwrt开启ipv6公网访问</title>
+    <link href="https://xda.plus/2024/03/24/openwrt%E5%BC%80%E5%90%AFipv6%E5%85%AC%E7%BD%91%E8%AE%BF%E9%97%AE/"/>
+    <id>https://xda.plus/2024/03/24/openwrt%E5%BC%80%E5%90%AFipv6%E5%85%AC%E7%BD%91%E8%AE%BF%E9%97%AE/</id>
+    <published>2024-03-24T12:13:14.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="添加防火墙规则"><a href="#添加防火墙规则" class="headerlink" title="添加防火墙规则"></a>添加防火墙规则</h4><p>进入路由器管理后台点击&#x2F;网络&#x2F;防火墙<br>选择通信规则<br>翻到底下点击添加规则</p><ul><li>常规设置<ul><li>名称：随意，</li><li>协议选择:udp,tcp或根据自己需求选择</li><li>源区域选择:wan wan:wan6</li><li>目标区域选择: 任意区域转发</li><li><code>目标地址：::1111:1111:1111:1111/::ffff:ffff:ffff:ffff</code>   </li><li>操作:接受</li></ul></li></ul><p>前缀动态后缀固定不变的选择自定义填写<code>::1111:1111:1111:1111/::ffff:ffff:ffff:ffff</code>,其中<code>1111:1111:1111:1111</code>修改为需要暴露设备的ipv6地址后面固定的部分,前面的::也要保留</p><ul><li>高级设置<ul><li>地址族限制：ipv6<br>其他保持默认即可<br>最后保存，保存应用</li></ul></li></ul><p>提示：运营商可能封掉一些端口，80端口无法访问，可以开一些非常用端口公网连接测试,只有你填写的目标地址才可以访问，内部其他设备不会暴露公网</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;添加防火墙规则&quot;&gt;&lt;a href=&quot;#添加防火墙规则&quot; class=&quot;headerlink&quot; title=&quot;添加防火墙规则&quot;&gt;&lt;/a&gt;添加防火墙规则&lt;/h4&gt;&lt;p&gt;进入路由器管理后台点击&amp;#x2F;网络&amp;#x2F;防火墙&lt;br&gt;选择通信规则&lt;br&gt;翻到底下点击添加</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="openwrt" scheme="https://xda.plus/tags/openwrt/"/>
+    
+    <category term="路由器" scheme="https://xda.plus/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+    <category term="ipv6" scheme="https://xda.plus/tags/ipv6/"/>
+    
+    <category term="防火墙" scheme="https://xda.plus/tags/%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>国内在手机上使用新必应聊天的教程</title>
+    <link href="https://xda.plus/2023/03/01/%E6%89%8B%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%BF%85%E5%BA%94ai/"/>
+    <id>https://xda.plus/2023/03/01/%E6%89%8B%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%BF%85%E5%BA%94ai/</id>
+    <published>2023-03-01T14:13:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="下载浏览器"><a href="#下载浏览器" class="headerlink" title="下载浏览器"></a>下载浏览器</h4><p>点击下载<a href="https://www.coolapk.com/apk/296754">狐猴浏览器</a></p><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p>插件1：<a href="https://microsoftedge.microsoft.com/addons/detail/modheader-modify-http-h/opgbiafapkbbnbnjcdomjaghbckfkglc">ModHeader - Modify HTTP headers</a><br>插件2：<a href="https://microsoftedge.microsoft.com/addons/detail/useragent-switcher-and-m/cnjkedgepfdpdbnepgmajmmjdjkjnifa">User-Agent Switcher and Manager</a><br>插件3：<a href="https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd">tampermonkey</a><br>依次打开上面链接安装3个插件</p><h4 id="设置插件"><a href="#设置插件" class="headerlink" title="设置插件"></a>设置插件</h4><p>打开浏览器底部四个小方块的按钮弹出菜单界面<br>安装完的插件在菜单顶部以图标展示<br>进入ModHeader插件</p><ul><li>第一个Name框填<code>X-Forwarded-For</code></li><li>第二个Value框填<code>4.2.2.2</code></li><li>填完直接下滑关掉界面，默认自动保存启用的</li></ul><p>进入User-Agent Switcher and Manager插件</p><ul><li>在顶部选择Edge-Android设置第一个UA</li><li>点击下面绿色的Apply保存应用</li><li>再点击旁边的Refresh Tab按键刷新一下</li></ul><p>现在安装解除bing聊天限制的脚本<br>打开网址<a href="https://greasyfork.org/en/scripts/461220-powerful-bing-chat-ai">脚本地址</a>点击绿色安装按钮<br>安装完脚本在tampermonkey中默认是打开的</p><p>全部设置完刷新一下<a href="https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx">bing</a>界面就行了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;下载浏览器&quot;&gt;&lt;a href=&quot;#下载浏览器&quot; class=&quot;headerlink&quot; title=&quot;下载浏览器&quot;&gt;&lt;/a&gt;下载浏览器&lt;/h4&gt;&lt;p&gt;点击下载&lt;a href=&quot;https://www.coolapk.com/apk/296754&quot;&gt;狐猴浏览器&lt;/a&gt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="bing" scheme="https://xda.plus/tags/bing/"/>
+    
+    <category term="new bing" scheme="https://xda.plus/tags/new-bing/"/>
+    
+    <category term="ai" scheme="https://xda.plus/tags/ai/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CloudFlare的节点</title>
+    <link href="https://xda.plus/2021/10/17/CloudFlare%E7%9A%84%E8%8A%82%E7%82%B9/"/>
+    <id>https://xda.plus/2021/10/17/CloudFlare%E7%9A%84%E8%8A%82%E7%82%B9/</id>
+    <published>2021-10-17T15:44:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>CloudFlare 百度云合作 ip：</p><blockquote><p>162.159.208.4-162.159.208.103<br>162.159.209.4-162.159.209.103<br>162.159.210.4-162.159.210.103<br>162.159.211.4-162.159.211.103   </p></blockquote><hr><p><a href="https://www.cloudflare.com/zh-cn/ips/">官方列表</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;CloudFlare 百度云合作 ip：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;162.159.208.4-162.159.208.103&lt;br&gt;162.159.209.4-162.159.209.103&lt;br&gt;162.159.210.4-162.159.210.103&lt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="CloudFlare" scheme="https://xda.plus/tags/CloudFlare/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>查看手机剩余电量百分比</title>
+    <link href="https://xda.plus/2020/08/29/%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BA%E5%89%A9%E4%BD%99%E7%94%B5%E9%87%8F%E7%99%BE%E5%88%86%E6%AF%94/"/>
+    <id>https://xda.plus/2020/08/29/%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BA%E5%89%A9%E4%BD%99%E7%94%B5%E9%87%8F%E7%99%BE%E5%88%86%E6%AF%94/</id>
+    <published>2020-08-29T13:00:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>cat /sys/class/power_supply/battery/capacity</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;code&gt;cat /sys/class/power_supply/battery/capacity&lt;/code&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>打开手机的虚拟按键</title>
+    <link href="https://xda.plus/2020/05/09/%E6%89%93%E5%BC%80%E6%89%8B%E6%9C%BA%E7%9A%84%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE/"/>
+    <id>https://xda.plus/2020/05/09/%E6%89%93%E5%BC%80%E6%89%8B%E6%9C%BA%E7%9A%84%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE/</id>
+    <published>2020-05-09T22:16:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>打开<code>/system/build.prop</code><br>在最下面加上<br><code>qemu.hw.mainkeys=0</code><br>保存，重启</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;打开&lt;code&gt;/system/build.prop&lt;/code&gt;&lt;br&gt;在最下面加上&lt;br&gt;&lt;code&gt;qemu.hw.mainkeys=0&lt;/code&gt;&lt;br&gt;保存，重启&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用swap虚拟内存</title>
+    <link href="https://xda.plus/2020/05/09/%E4%BD%BF%E7%94%A8swap%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"/>
+    <id>https://xda.plus/2020/05/09/%E4%BD%BF%E7%94%A8swap%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</id>
+    <published>2020-05-09T22:11:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>-创建一个大约500m的文<br><code># dd if=/dev/zero of=/swapfile bs=1M count=500</code></p><p>-把文件格式化成swap<br><code># mkswap /swapfile</code></p><p>-启用swap<br><code># swapon /swapfile</code></p><p>-支持&#x2F;etc&#x2F;fstab的可以在&#x2F;etc&#x2F;fstab里写入<br><code>/swapfile     swap   swap  rw</code><br>–<code>/swapfile</code>是上面创建的swap文件路径<br>–这样开机就会自动开启swap</p><p>-用free命令检查是否 增加swap<br><code># free</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;-创建一个大约500m的文&lt;br&gt;&lt;code&gt;# dd if=/dev/zero of=/swapfile bs=1M count=500&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;-把文件格式化成swap&lt;br&gt;&lt;code&gt;# mkswap /swapfile&lt;/code&gt;&lt;/p&gt;
+&lt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用adb解开system锁</title>
+    <link href="https://xda.plus/2020/05/09/%E4%BD%BF%E7%94%A8adb%E8%A7%A3%E5%BC%80system%E9%94%81/"/>
+    <id>https://xda.plus/2020/05/09/%E4%BD%BF%E7%94%A8adb%E8%A7%A3%E5%BC%80system%E9%94%81/</id>
+    <published>2020-05-09T21:32:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>adb disable-verity</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;pre&gt;&lt;code&gt;adb disable-verity
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql8修改密码</title>
+    <link href="https://xda.plus/2020/01/12/mysql8%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81/"/>
+    <id>https://xda.plus/2020/01/12/mysql8%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81/</id>
+    <published>2020-01-12T14:57:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;新密码&#x27;</span>;</span><br></pre></td></tr></table></figure><p>优化mysql占用的内存</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="attr">performance_schema_max_table_instances</span>=<span class="number">400</span>  </span><br><span class="line"><span class="attr">table_definition_cache</span>=<span class="number">400</span>  </span><br><span class="line"><span class="attr">table_open_cache</span>=<span class="number">256</span></span><br><span class="line"><span class="attr">performance_schema</span> = <span class="literal">off</span></span><br></pre></td></tr></table></figure><p>重启mysql</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysql</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="Linux" scheme="https://xda.plus/tags/Linux/"/>
+    
+    <category term="Mysql" scheme="https://xda.plus/tags/Mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>提升手机2.4Gwifi连接速度</title>
+    <link href="https://xda.plus/2020/01/12/%E6%8F%90%E5%8D%87%E6%89%8B%E6%9C%BA2.4Gwifi%E8%BF%9E%E6%8E%A5%E9%80%9F%E5%BA%A6/"/>
+    <id>https://xda.plus/2020/01/12/%E6%8F%90%E5%8D%87%E6%89%8B%E6%9C%BA2.4Gwifi%E8%BF%9E%E6%8E%A5%E9%80%9F%E5%BA%A6/</id>
+    <published>2020-01-12T14:43:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>主要有些厂家限制了WiFi的速度，导致不能正常发挥，默认速率为72Mbps，开启后达到150Mbps左右。<br>缺点：40MHz穿墙后没有默认的20MHz稳定，根据自己需求开启吧。</p><p>开启40MHz<br>1.解锁BootLoader<br>2.有ROOT权限<br>3.解锁sytem分区<br>1.用mt管理器打开<code>/vendor/etc/wifi</code><br>2.编辑<code>WCNSS_qcom_cfg.ini</code><br>找到<code>gChannelBondingMode5GHz=1</code><br>在它下方添加一行<code>gChannelBondingMode24GHz=1</code><br>保存重启就可以了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;主要有些厂家限制了WiFi的速度，导致不能正常发挥，默认速率为72Mbps，开启后达到150Mbps左右。&lt;br&gt;缺点：40MHz穿墙后没有默认的20MHz稳定，根据自己需求开启吧。&lt;/p&gt;
+&lt;p&gt;开启40MHz&lt;br&gt;1.解锁BootLoader&lt;br&gt;2.有ROOT权限</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>清理运存</title>
+    <link href="https://xda.plus/2020/01/12/%E6%B8%85%E7%90%86%E8%BF%90%E5%AD%98/"/>
+    <id>https://xda.plus/2020/01/12/%E6%B8%85%E7%90%86%E8%BF%90%E5%AD%98/</id>
+    <published>2020-01-12T14:19:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>$ wget http://one.funs.ml/Termux/kmemory-all.deb</code><br><code>$ dpkg -i kmemory-all.deb</code><br><code>$ kmemory</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;code&gt;$ wget http://one.funs.ml/Termux/kmemory-all.deb&lt;/code&gt;&lt;br&gt;&lt;code&gt;$ dpkg -i kmemory-all.deb&lt;/code&gt;&lt;br&gt;&lt;code&gt;$ kmemory&lt;/code&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>播放终端测试</title>
+    <link href="https://xda.plus/2020/01/12/%E6%92%AD%E6%94%BE%E7%BB%88%E7%AB%AF%E6%B5%8B%E8%AF%95/"/>
+    <id>https://xda.plus/2020/01/12/%E6%92%AD%E6%94%BE%E7%BB%88%E7%AB%AF%E6%B5%8B%E8%AF%95/</id>
+    <published>2020-01-12T14:17:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>!!!</p><link rel="stylesheet" href="//cdn.staticfile.org/asciinema-player/2.6.1/asciinema-player.min.css"><script src="//cdn.staticfile.org/asciinema-player/2.6.1/asciinema-player.min.js"></script><asciinema-player src="//cdn.jsdelivr.net/gh/zfuns/Staticfiles@latest/cast/test.cast" cols="128" rows="17" ></asciinema-player>!!!]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;!!!&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.staticfile.org/asciinema-player/2.6.1/asciinema-player.min.css&quot;&gt;
+&lt;script src=&quot;//cdn.staticfile</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="test" scheme="https://xda.plus/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Termux全套汉化</title>
+    <link href="https://xda.plus/2020/01/12/Termux%E5%85%A8%E5%A5%97%E6%B1%89%E5%8C%96/"/>
+    <id>https://xda.plus/2020/01/12/Termux%E5%85%A8%E5%A5%97%E6%B1%89%E5%8C%96/</id>
+    <published>2020-01-12T14:16:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="App下载"><a href="#App下载" class="headerlink" title="App下载"></a>App下载</h3><ul><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux</a></li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux_widget</a>  </li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux_styling</a></li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux.task</a></li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux.float</a>  </li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux_api</a></li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux.boot</a></li></ul><h3 id="新地址"><a href="#新地址" class="headerlink" title="新地址"></a>新地址</h3><ul><li><p><a href="https://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb">https://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb</a>   </p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;App下载&quot;&gt;&lt;a href=&quot;#App下载&quot; class=&quot;headerlink&quot; title=&quot;App下载&quot;&gt;&lt;/a&gt;App下载&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://api.funs.ml/lzy_dir/api.php?fdir=b0e</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Weechat的使用</title>
+    <link href="https://xda.plus/2020/01/12/Weechat%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://xda.plus/2020/01/12/Weechat%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-01-12T14:15:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>输入<code>/help</code>查看使用方法.<br>添加服务器.<br><code>/server add freenode irc.freenode.net</code><br>连接服务器.<br><code>/connect freenode</code><br>注册帐号. (不注册也可以聊)<br><code>/msg NickServ REGISTER 名称 密码 邮箱</code><br>输入时，如果上面名称变成*号说明是以当前默认用户名注册， 改成。<br><code>/msg NickServ REGISTER 密码 邮箱</code><br>改名.<br><code>/nick 新名字</code><br>进入频道.  (频道一般以#开头)<br><code>/join #funs</code><br>和别人开小窗单独聊天.<br><code>/query 昵称|#频道</code><br>离开频道.<br><code>/part</code><br>退出服务器.<br><code>/quit</code></p><h4 id="更多相关命令请百度或谷歌⏎"><a href="#更多相关命令请百度或谷歌⏎" class="headerlink" title="更多相关命令请百度或谷歌⏎"></a>更多相关命令请百度或谷歌⏎</h4>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;输入&lt;code&gt;/help&lt;/code&gt;查看使用方法.&lt;br&gt;添加服务器.&lt;br&gt;&lt;code&gt;/server add freenode irc.freenode.net&lt;/code&gt;&lt;br&gt;连接服务器.&lt;br&gt;&lt;code&gt;/connect freenode&lt;/code&gt;&lt;b</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>查看手机QQ闪照的方法</title>
+    <link href="https://xda.plus/2020/01/12/%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BAQQ%E9%97%AA%E7%85%A7%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>https://xda.plus/2020/01/12/%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BAQQ%E9%97%AA%E7%85%A7%E7%9A%84%E6%96%B9%E6%B3%95/</id>
+    <published>2020-01-12T14:14:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>QQ闪照只能查看几秒钟，但实际上文件已经存在手机里了。</p><p>在文件管理器找到<code>Android/data/com.tencent.mobileqq/Tencent/MobileQQ/chatpic/chatimg/</code>文件夹，里面非常多缓存图片，(删除它，不然等下非常难找闪照),进QQ点击闪照，（别长按,不然会删除掉），在马赛克界面切回文件管理器，进入上面文件夹，每个文件以图片方式打开，应该就能找到闪照的缓存了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;QQ闪照只能查看几秒钟，但实际上文件已经存在手机里了。&lt;/p&gt;
+&lt;p&gt;在文件管理器找到&lt;code&gt;Android/data/com.tencent.mobileqq/Tencent/MobileQQ/chatpic/chatimg/&lt;/code&gt;文件夹，里面非常多缓存图片，</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+    <category term="qq" scheme="https://xda.plus/tags/qq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>获取qq头像</title>
+    <link href="https://xda.plus/2020/01/12/%E8%8E%B7%E5%8F%96qq%E5%A4%B4%E5%83%8F/"/>
+    <id>https://xda.plus/2020/01/12/%E8%8E%B7%E5%8F%96qq%E5%A4%B4%E5%83%8F/</id>
+    <published>2020-01-12T14:13:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>api接口： </code><a href="http://q1.qlogo.cn/g?b=qq&nk=QQ%E5%8F%B7%E7%A0%81&s=640">http://q1.qlogo.cn/g?b=qq&amp;nk=QQ号码&amp;s=640</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;code&gt;api接口： &lt;/code&gt;&lt;a href=&quot;http://q1.qlogo.cn/g?b=qq&amp;nk=QQ%E5%8F%B7%E7%A0%81&amp;s=640&quot;&gt;http://q1.qlogo.cn/g?b=qq&amp;amp;nk=QQ号码&amp;amp;s=640&lt;/a&gt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="api" scheme="https://xda.plus/tags/api/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开启一些常用服务</title>
+    <link href="https://xda.plus/2020/01/12/%E5%BC%80%E5%90%AF%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://xda.plus/2020/01/12/%E5%BC%80%E5%90%AF%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1/</id>
+    <published>2020-01-12T14:12:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>$ <code>busybox telnetd -l bash -p 9000</code><br>$ <code>busybox httpd -p 8080 -h /www</code><br>$ <code>tcpsvd 0 8021 ftpd -w /sdcard &amp;</code><br>$ <code>sshd</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;$ &lt;code&gt;busybox telnetd -l bash -p 9000&lt;/code&gt;&lt;br&gt;$ &lt;code&gt;busybox httpd -p 8080 -h /www&lt;/code&gt;&lt;br&gt;$ &lt;code&gt;tcpsvd 0 8021 ftpd -w /sdcard &amp;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>deb的打包与解包</title>
+    <link href="https://xda.plus/2020/01/12/deb%E7%9A%84%E6%89%93%E5%8C%85%E4%B8%8E%E8%A7%A3%E5%8C%85/"/>
+    <id>https://xda.plus/2020/01/12/deb%E7%9A%84%E6%89%93%E5%8C%85%E4%B8%8E%E8%A7%A3%E5%8C%85/</id>
+    <published>2020-01-12T14:11:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><p><code>mkdir extract</code><br><code>mkdir extract/DEBIAN</code><br><code>mkdir build</code></p><h2 id="解包："><a href="#解包：" class="headerlink" title="解包："></a>解包：</h2><p>解压出包中的文件到extract目录下<br><code>dpkg -X test.deb extract/</code><br>解压出包的控制信息extract&#x2F;DEBIAN&#x2F;目录下<br><code>dpkg -e test.deb extract/DEBIAN/</code> </p><h2 id="打包生成deb包"><a href="#打包生成deb包" class="headerlink" title="打包生成deb包:"></a>打包生成deb包:</h2><p>生成的deb包在build&#x2F;目录下<br><code>dpkg-deb -b extract/ build/</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;准备工作：&quot;&gt;&lt;a href=&quot;#准备工作：&quot; class=&quot;headerlink&quot; title=&quot;准备工作：&quot;&gt;&lt;/a&gt;准备工作：&lt;/h2&gt;&lt;p&gt;&lt;code&gt;mkdir extract&lt;/code&gt;&lt;br&gt;&lt;code&gt;mkdir extract/DEBIAN&lt;/</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>aclock</title>
+    <link href="https://xda.plus/2020/01/12/aclock/"/>
+    <id>https://xda.plus/2020/01/12/aclock/</id>
+    <published>2020-01-12T14:10:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>Aclock是一个时钟程序，在Termux上编译，您需要下载源代码。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/tenox7/aclock/master/sources/aclock-unix-curses.c</span><br></pre></td></tr></table></figure><p>你还需要ncurses-dev包</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg in ncurses-dev</span><br></pre></td></tr></table></figure><p>现在你只需要编译它</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc aclock-unix-curses.c -o aclock -lncurses -lm</span><br></pre></td></tr></table></figure><p>之后，你可以简单地运行它<br><code>./aclock</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Aclock是一个时钟程序，在Termux上编译，您需要下载源代码。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>systemd</title>
+    <link href="https://xda.plus/2020/01/12/systemd/"/>
+    <id>https://xda.plus/2020/01/12/systemd/</id>
+    <published>2020-01-12T14:09:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">systemctl is-enabled iptables.service</span><br><span class="line">systemctl is-enabled servicename.service <span class="comment">#查询服务是否开机启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> *.service <span class="comment">#开机运行服务</span></span><br><span class="line">systemctl <span class="built_in">disable</span> *.service <span class="comment">#取消开机运行</span></span><br><span class="line">systemctl start *.service <span class="comment">#启动服务</span></span><br><span class="line">systemctl stop *.service <span class="comment">#停止服务</span></span><br><span class="line">systemctl restart *.service <span class="comment">#重启服务</span></span><br><span class="line">systemctl reload *.service <span class="comment">#重新加载服务配置文件</span></span><br><span class="line">systemctl status *.service <span class="comment">#查询服务运行状态</span></span><br><span class="line">systemctl --failed <span class="comment">#显示启动失败的服务</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PandoraBox扩大内部容量</title>
+    <link href="https://xda.plus/2019/07/12/pdr/"/>
+    <id>https://xda.plus/2019/07/12/pdr/</id>
+    <published>2019-07-12T00:00:00.000Z</published>
+    <updated>2024-03-24T02:36:17.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>格式化U盘为ext3或ext4文件系统<br>1.查看你的分区信息：<br>查看U盘的挂载点<br><code>mount</code><br>查看U盘的UUID<br><code>blkid</code><br>记下U盘的uuid和挂载路径.后面要用到</p><p>2.overlay分区准备：<br>删除U盘内所有文件<br><code>rm -rf /mnt/sda/*</code><br>&#x2F;mnt&#x2F;sda&#x2F;是U盘自动挂载的路径</p><p>复制原overlay分区的内容到U盘<br><code>cp -a /overlay/* /mnt/sda/</code></p><p>3.挂载设置：<br><code>vim /etc/config/fstab</code><br>在原配置下添加</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">config</span> <span class="string">mount</span></span><br><span class="line">    <span class="string">option</span> <span class="string">enabled</span> <span class="string">&#x27;1&#x27;</span></span><br><span class="line">    <span class="string">option</span> <span class="string">uuid</span> <span class="string">&#x27;b928fe2c-4881-4ba3-9a6e-a0f6dc2b302e&#x27;</span></span><br><span class="line">    <span class="string">option</span> <span class="string">target</span> <span class="string">&#x27;/overlay&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>修改uuid的值为上面u盘的uuid值<br>最后重启路由器<br><code>reboot</code><br>连接ssh输入df -h看看空间是不是变大了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;格式化U盘为ext3或ext4文件系统&lt;br&gt;1.查看你的分区信息：&lt;br&gt;查看U盘的挂载点&lt;br&gt;&lt;code&gt;mount&lt;/code&gt;&lt;br&gt;查看U盘的UUID&lt;br&gt;&lt;code&gt;blkid&lt;/code&gt;&lt;br&gt;记下U盘的uuid和挂载路径.后面要用到&lt;/p&gt;
+&lt;p&gt;2.</summary>
+      
+    
+    
+    
+    <category term="路由器" scheme="https://xda.plus/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+    
+    <category term="路由器" scheme="https://xda.plus/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+    <category term="PandoraBox" scheme="https://xda.plus/tags/PandoraBox/"/>
+    
+  </entry>
+  
+</feed>

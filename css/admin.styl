@@ -1,0 +1,52 @@
+.pages-admin {
+  h2 span a {
+    color: #6b7380;
+    font-size:15px;
+  }
+  & .list-item {
+    background: var(--content-bg-color);
+    height: auto;
+    border: 1px solid #e6e7eb;
+    border-radius: 4px;
+    margin-bottom:20px;
+    line-height:20px;
+
+    position: relative;
+    page-break-inside:avoid;
+    &:hover {
+        box-shadow:0.1px 0.1px 30px 0.1px rgba(0,0,0,0.05) inset;
+    }
+  }
+  & input {
+    background: #fff;
+    width: 100%;
+  }
+  & textarea {
+    height: 200px;
+    width: 100%;
+    &::-webkit-scrollbar {
+      display: none;
+      }
+  }
+  & #admin-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    & span {
+      font-size: 12px;
+      &:active,&:hover {
+        color:var(--bright-color);
+      }
+      &:after {
+        content: '·';
+        margin:0 8px;
+      }
+      &:last-child {
+        &:after {
+          content: '';
+          margin:0;
+        }
+      }
+    }
+  }
+}

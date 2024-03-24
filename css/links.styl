@@ -1,0 +1,43 @@
+.pages-links {
+    .links-item {
+        background: var(--content-bg-color);
+        height: auto;
+        border: 1px solid #e6e7eb;
+        border-radius: 4px;
+        margin-bottom:20px;
+        line-height:20px;
+        position: relative;
+        overflow: hidden;
+        & a:active,& a:hover {
+            color:#fff;
+            background-color:var(--bright-color);
+        }
+        & img {
+            width:64px;
+            height:64px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            background: var(--content-bg-color);
+            z-index: 2;
+        }
+        & a {
+            display: flex;
+            padding: 10px 15px;
+        }
+    }
+.links-item .nr {
+    margin-left:15px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    z-index:2;
+}
+.item-title {
+    font-weight:700;
+}
+.item-sub {
+    font-size:0.9em;
+    }
+
+}
