@@ -1,0 +1,38 @@
+#archive-box {
+    background: var(--content-bg-color);
+    padding: 10px 20px 10px 20px;
+    margin-top: 10px;
+
+}
+
+.index-list {
+    font-size:15px;
+    & ul {
+    list-style-type: none;
+    padding: 0;
+    }
+    & li {
+        white-space: nowrap;
+        list-style-position: inside;
+        text-overflow: ellipsis;
+        margin:0.5em 0;
+        vertical-align:middle;
+        display:flex;
+        line-height: 24px;
+        }
+    & .fad {
+        font-size:10px;
+        text-align:center;
+        padding: 7px 4px 0px 0px;
+    }
+    & a {
+        flex:1;
+        max-width:calc(100% - 79px);
+        overflow:hidden;
+        text-overflow: ellipsis;
+    }
+    & span {
+        width: 75px;
+        color: #999;
+    }
+}

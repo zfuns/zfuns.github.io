@@ -1,0 +1,87 @@
+.pages-github {
+    h2 span a {
+        color: #6b7380;
+        font-size:15px;
+    }
+.list-item {
+    background: var(--content-bg-color);
+    height: auto;
+    border: 1px solid #e6e7eb;
+    border-radius: 4px;
+    margin-bottom:20px;
+    line-height:20px;
+
+    position: relative;
+    page-break-inside:avoid;
+    &:hover {
+        box-shadow:0.1px 0.1px 30px 0.1px rgba(0,0,0,0.05) inset;
+    }
+    & a {
+        display: flex;
+        padding: 10px 15px;
+        &:hover {
+            color:var(--text-color);
+        }
+    }
+    & .list-item-nr {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        & .item-title {
+            font-weight:700;
+        }
+        & .item-sub {
+            font-size:0.9em;
+            margin:10px 0;
+        }
+        & .item-bar {
+            font-size:0.9em;
+        }
+    }
+}
+.item-bar {
+    & .language {
+        margin-left:20px;
+        & i {
+            width:11px;
+            height:11px;
+            background:#f1e158;
+            border-radius: 50%; 
+            display: inline-block;
+            &[title=HTML]{background:#e44c27;}
+            &[title=Vue]{background:#41b783;}
+            &[title=PHP]{background:#4e5d94;}
+            &[title=Go]{background:#00acd9;}
+            &[title=Java]{background:#af7217;}
+            &[title=C]{background:#555555;}
+            &[title="C++"]{background:#f34b7e;}
+            &[title=Python]{background:#3573a6;}
+            &[title=Objective-C]{background:#428dfe;}
+            &[title=TypeScript]{background:#2c748a;}
+            &[title=CSS]{background:#563e7c;}
+            &[title=Shell]{background:#89e051;}
+            &[title=Ruby]{background:#6f1515;}
+            &[title="Jupyter Notebook"]{background:#da5b0c;}
+            &[title=CoffeeScript]{background:#254775;}
+            &[title=Groovy]{background:#4298b9;}
+            &[title=Dart]{background:#00b4ab;}
+            &[title="C#"]{background:#178701;}
+            &[title=Swift]{background:#f15139;}
+            &[title=Makefile]{background:#42771a;}
+            &[title="Vim Script"]{background:#199e4b;}
+            &[title=Haxe]{background:#e07902;}
+            &[title=Dockerfile]{background:#394d54;}
+            &[title=Rust]{background:#dda584;}
+            &[title=Assembly]{background:#6f4c14;}
+            &[title=sed]{background:#63b970;}
+            &[title=R]{background:#198ce7;}
+            &[title=MATLAB]{background:#e16736;}
+            &[title=Elixir]{background:#6f4a7e;}
+        }
+    }
+    & .forks_count {
+        position: absolute;
+        right:15px;
+    }
+}
+}

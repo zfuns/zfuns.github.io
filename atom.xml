@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>FUNS</title>
+  
+  
+  <link href="https://xda.plus/atom.xml" rel="self"/>
+  
+  <link href="https://xda.plus/"/>
+  <updated>2026-02-09T15:16:01.027Z</updated>
+  <id>https://xda.plus/</id>
+  
+  <author>
+    <name>zfuns</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>小米5x安装postmarketOS</title>
+    <link href="https://xda.plus/2025/08/18/%E5%B0%8F%E7%B1%B35x%E5%AE%89%E8%A3%85postmarketOS/"/>
+    <id>https://xda.plus/2025/08/18/%E5%B0%8F%E7%B1%B35x%E5%AE%89%E8%A3%85postmarketOS/</id>
+    <published>2025-08-18T04:13:14.000Z</published>
+    <updated>2026-02-09T15:16:01.027Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="安装pmbootstrap工具"><a href="#安装pmbootstrap工具" class="headerlink" title="安装pmbootstrap工具"></a>安装pmbootstrap工具</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 有代理可以先配置代理服务加速拉取</span></span><br><span class="line"><span class="comment"># export http_proxy=&quot;http://10.0.0.102:10808&quot;</span></span><br><span class="line"><span class="comment"># export http_proxys=&quot;http://10.0.0.102:10808&quot;</span></span><br><span class="line">git <span class="built_in">clone</span> https://gitlab.postmarketos.org/postmarketOS/pmbootstrap.git</span><br></pre></td></tr></table></figure><h4 id="配置pmbootstrap"><a href="#配置pmbootstrap" class="headerlink" title="配置pmbootstrap"></a>配置pmbootstrap</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 可能会缺少一些依赖，按照提示安装即可</span><br><span class="line"># adb, fastboot, git, python3, kpartx，...</span><br><span class="line">cd pmbootstrap</span><br><span class="line">./pmbootstrap.py init</span><br><span class="line"></span><br><span class="line">#&#x27;work&#x27; path: 默认或者自定义路径</span><br><span class="line">#Channel [edge]: edge </span><br><span class="line">#Vendor [qemu]: qcom</span><br><span class="line">#Device codename: msm8953</span><br><span class="line">#Username [user]: #自定义你的ssh用户名或者默认user</span><br><span class="line">#User interface [console]: #选择桌面环境，不需要图形界面就选console或shelli,none,等</span><br><span class="line">#其它选项默认即可</span><br></pre></td></tr></table></figure><h5 id="修改默认镜像源为清华源，加快下载速度"><a href="#修改默认镜像源为清华源，加快下载速度" class="headerlink" title="修改默认镜像源为清华源，加快下载速度"></a>修改默认镜像源为清华源，加快下载速度</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./pmbootstrap.py config mirrors.alpine https://mirrors.tuna.tsinghua.edu.cn/alpine/</span><br><span class="line">./pmbootstrap.py config mirrors.pmaports https://mirrors.tuna.tsinghua.edu.cn/postmarketOS/</span><br></pre></td></tr></table></figure><h4 id="创建系统镜像"><a href="#创建系统镜像" class="headerlink" title="创建系统镜像"></a>创建系统镜像</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./pmbootstrap.py install</span><br><span class="line"><span class="comment">#过程中会让你设置ssh密码</span></span><br></pre></td></tr></table></figure><h4 id="刷入手机"><a href="#刷入手机" class="headerlink" title="刷入手机"></a>刷入手机</h4><p>手机进入fastboot模式，连接电脑，执行以下命令刷入系统镜像<br>刷前可能需要擦除一下分区</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot erase userdata</span><br></pre></td></tr></table></figure><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">./pmbootstrap.py flasher flash_lk2nd</span><br><span class="line">./pmbootstrap.py flasher flash_rootfs</span><br><span class="line">```   </span><br><span class="line">以上命令如果没效果，可以尝试以下命令</span><br><span class="line"></span><br><span class="line">```sh</span><br><span class="line">./pmbootstrap.py <span class="built_in">export</span> <span class="comment">#导出创建的系统镜像</span></span><br><span class="line">然后用fastboot命令手动刷入</span><br><span class="line">检查是否有这个两个文件</span><br><span class="line">/tmp/postmarketOS-<span class="built_in">export</span>/lk2nd.img</span><br><span class="line">/tmp/postmarketOS-<span class="built_in">export</span>/qcom-msm8953.img</span><br><span class="line"></span><br><span class="line">fastboot flash boot /tmp/postmarketOS-<span class="built_in">export</span>/lk2nd.img</span><br><span class="line">fastboot flash userdata /tmp/postmarketOS-<span class="built_in">export</span>/qcom-msm8953.img</span><br></pre></td></tr></table></figure><h4 id="刷入完成后重启手机，进入postmarketOS系统"><a href="#刷入完成后重启手机，进入postmarketOS系统" class="headerlink" title="刷入完成后重启手机，进入postmarketOS系统"></a>刷入完成后重启手机，进入postmarketOS系统</h4><p>手机usb连接电脑后可以通过ssh连接手机，默认用户名是安装过程中设置的，密码也是安装过程中设置的<br>使用ssh 172.16.42.1连接ssh,</p><h4 id="配置wifi"><a href="#配置wifi" class="headerlink" title="配置wifi"></a>配置wifi</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> nmcli device wifi list ifname wlan0</span><br><span class="line">$ <span class="built_in">sudo</span> nmcli device wifi connect <span class="string">&quot;<span class="variable">$SSID</span>&quot;</span> password <span class="string">&quot;<span class="variable">$PASSWORD</span>&quot;</span> ifname <span class="string">&quot;wlan0&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;安装pmbootstrap工具&quot;&gt;&lt;a href=&quot;#安装pmbootstrap工具&quot; class=&quot;headerlink&quot; title=&quot;安装pmbootstrap工具&quot;&gt;&lt;/a&gt;安装pmbootstrap工具&lt;/h4&gt;&lt;figure class=&quot;highli</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="手机" scheme="https://xda.plus/tags/%E6%89%8B%E6%9C%BA/"/>
+    
+    <category term="postmarketOS" scheme="https://xda.plus/tags/postmarketOS/"/>
+    
+    <category term="小米5x" scheme="https://xda.plus/tags/%E5%B0%8F%E7%B1%B35x/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小米BE3600</title>
+    <link href="https://xda.plus/2024/09/18/%E5%B0%8F%E7%B1%B3BE3600%E8%AE%B0%E5%BD%95/"/>
+    <id>https://xda.plus/2024/09/18/%E5%B0%8F%E7%B1%B3BE3600%E8%AE%B0%E5%BD%95/</id>
+    <published>2024-09-18T04:13:14.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="开启SSH"><a href="#开启SSH" class="headerlink" title="开启SSH"></a>开启SSH</h4><p>登录路由器web管理界面，复制url中的stok&#x3D;后面的字符串</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">stok=<span class="string">&#x27;xxxxxxxx&#x27;</span> <span class="comment">#前面获取的stok值</span></span><br><span class="line">ip=<span class="string">&#x27;192.168.31.1&#x27;</span> <span class="comment">#路由器的ip地址</span></span><br><span class="line"></span><br><span class="line">curl -X POST <span class="string">&quot;http://<span class="variable">$ip</span>/cgi-bin/luci/;stok=<span class="variable">$stok</span>/api/xqsystem/start_binding&quot;</span> -d <span class="string">&quot;uid=1234&amp;key=1234&#x27;%0Anvram%20set%20ssh_en%3D1&#x27;&quot;</span></span><br><span class="line">curl -X POST <span class="string">&quot;http://<span class="variable">$ip</span>/cgi-bin/luci/;stok=<span class="variable">$stok</span>/api/xqsystem/start_binding&quot;</span> -d <span class="string">&quot;uid=1234&amp;key=1234&#x27;%0Anvram%20commit&#x27;&quot;</span></span><br><span class="line">curl -X POST <span class="string">&quot;http://<span class="variable">$ip</span>/cgi-bin/luci/;stok=<span class="variable">$stok</span>/api/xqsystem/start_binding&quot;</span> -d <span class="string">&quot;uid=1234&amp;key=1234&#x27;%0Ased%20-i%20&#x27;s%2Fchannel%3D.*%2Fchannel%3D%22debug%22%2Fg&#x27;%20%2Fetc%2Finit.d%2Fdropbear&#x27;&quot;</span></span><br><span class="line">curl -X POST <span class="string">&quot;http://<span class="variable">$ip</span>/cgi-bin/luci/;stok=<span class="variable">$stok</span>/api/xqsystem/start_binding&quot;</span> -d <span class="string">&quot;uid=1234&amp;key=1234&#x27;%0A%2Fetc%2Finit.d%2Fdropbear%20start&#x27;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>路由器web管理界面复制<code>SN</code>去<code>https://miwifi.dev/ssh</code>计算默认密码</p><h4 id="配置ipv6防火墙"><a href="#配置ipv6防火墙" class="headerlink" title="配置ipv6防火墙"></a>配置ipv6防火墙</h4><p>ipv6防火墙开启状态下暴露本地设备方法<br>编辑<code>/data/etc/config/firewall</code></p><p>添加一个规则</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">config rule &#x27;AlloW_Ipv6&#x27;</span><br><span class="line">        option name &#x27;AlloW_Ipv6&#x27;</span><br><span class="line">        option src &#x27;wan&#x27;</span><br><span class="line">        option proto &#x27;tcp&#x27;</span><br><span class="line">        option dest &#x27;lan&#x27;</span><br><span class="line">        option dest_ip &#x27;::aaaa:bbbb:cccc:dddd/-64&#x27;</span><br><span class="line">        option family &#x27;ipv6&#x27;</span><br><span class="line">        option target &#x27;ACCEPT&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>执行<code>/etc/init.d/firewall restart</code>重启防火墙</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;开启SSH&quot;&gt;&lt;a href=&quot;#开启SSH&quot; class=&quot;headerlink&quot; title=&quot;开启SSH&quot;&gt;&lt;/a&gt;开启SSH&lt;/h4&gt;&lt;p&gt;登录路由器web管理界面，复制url中的stok&amp;#x3D;后面的字符串&lt;/p&gt;
+&lt;figure class=&quot;hi</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="openwrt" scheme="https://xda.plus/tags/openwrt/"/>
+    
+    <category term="路由器" scheme="https://xda.plus/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+    <category term="ipv6" scheme="https://xda.plus/tags/ipv6/"/>
+    
+    <category term="防火墙" scheme="https://xda.plus/tags/%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>openwrt开启ipv6公网访问</title>
+    <link href="https://xda.plus/2024/03/24/openwrt%E5%BC%80%E5%90%AFipv6%E5%85%AC%E7%BD%91%E8%AE%BF%E9%97%AE/"/>
+    <id>https://xda.plus/2024/03/24/openwrt%E5%BC%80%E5%90%AFipv6%E5%85%AC%E7%BD%91%E8%AE%BF%E9%97%AE/</id>
+    <published>2024-03-24T04:13:14.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="添加防火墙规则"><a href="#添加防火墙规则" class="headerlink" title="添加防火墙规则"></a>添加防火墙规则</h4><p>进入路由器管理后台点击&#x2F;网络&#x2F;防火墙<br>选择通信规则<br>翻到底下点击添加规则</p><ul><li>常规设置<ul><li>名称：随意，</li><li>协议选择:udp,tcp或根据自己需求选择</li><li>源区域选择:wan wan:wan6</li><li>目标区域选择: 任意区域转发</li><li><code>目标地址：::1111:1111:1111:1111/::ffff:ffff:ffff:ffff</code>   </li><li>操作:接受</li></ul></li></ul><p>前缀动态后缀固定不变的选择自定义填写<code>::1111:1111:1111:1111/::ffff:ffff:ffff:ffff</code>,其中<code>1111:1111:1111:1111</code>修改为需要暴露设备的ipv6地址后面固定的部分,前面的::也要保留</p><ul><li>高级设置<ul><li>地址族限制：ipv6<br>其他保持默认即可<br>最后保存，保存应用</li></ul></li></ul><p>提示：运营商可能封掉一些端口，80端口无法访问，可以开一些非常用端口公网连接测试,只有你填写的目标地址才可以访问，内部其他设备不会暴露公网</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;添加防火墙规则&quot;&gt;&lt;a href=&quot;#添加防火墙规则&quot; class=&quot;headerlink&quot; title=&quot;添加防火墙规则&quot;&gt;&lt;/a&gt;添加防火墙规则&lt;/h4&gt;&lt;p&gt;进入路由器管理后台点击&amp;#x2F;网络&amp;#x2F;防火墙&lt;br&gt;选择通信规则&lt;br&gt;翻到底下点击添加</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="openwrt" scheme="https://xda.plus/tags/openwrt/"/>
+    
+    <category term="路由器" scheme="https://xda.plus/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+    <category term="ipv6" scheme="https://xda.plus/tags/ipv6/"/>
+    
+    <category term="防火墙" scheme="https://xda.plus/tags/%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>国内在手机上使用新必应聊天的教程</title>
+    <link href="https://xda.plus/2023/03/01/%E6%89%8B%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%BF%85%E5%BA%94ai/"/>
+    <id>https://xda.plus/2023/03/01/%E6%89%8B%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%BF%85%E5%BA%94ai/</id>
+    <published>2023-03-01T06:13:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="下载浏览器"><a href="#下载浏览器" class="headerlink" title="下载浏览器"></a>下载浏览器</h4><p>点击下载<a href="https://www.coolapk.com/apk/296754">狐猴浏览器</a></p><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p>插件1：<a href="https://microsoftedge.microsoft.com/addons/detail/modheader-modify-http-h/opgbiafapkbbnbnjcdomjaghbckfkglc">ModHeader - Modify HTTP headers</a><br>插件2：<a href="https://microsoftedge.microsoft.com/addons/detail/useragent-switcher-and-m/cnjkedgepfdpdbnepgmajmmjdjkjnifa">User-Agent Switcher and Manager</a><br>插件3：<a href="https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd">tampermonkey</a><br>依次打开上面链接安装3个插件</p><h4 id="设置插件"><a href="#设置插件" class="headerlink" title="设置插件"></a>设置插件</h4><p>打开浏览器底部四个小方块的按钮弹出菜单界面<br>安装完的插件在菜单顶部以图标展示<br>进入ModHeader插件</p><ul><li>第一个Name框填<code>X-Forwarded-For</code></li><li>第二个Value框填<code>4.2.2.2</code></li><li>填完直接下滑关掉界面，默认自动保存启用的</li></ul><p>进入User-Agent Switcher and Manager插件</p><ul><li>在顶部选择Edge-Android设置第一个UA</li><li>点击下面绿色的Apply保存应用</li><li>再点击旁边的Refresh Tab按键刷新一下</li></ul><p>现在安装解除bing聊天限制的脚本<br>打开网址<a href="https://greasyfork.org/en/scripts/461220-powerful-bing-chat-ai">脚本地址</a>点击绿色安装按钮<br>安装完脚本在tampermonkey中默认是打开的</p><p>全部设置完刷新一下<a href="https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx">bing</a>界面就行了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;下载浏览器&quot;&gt;&lt;a href=&quot;#下载浏览器&quot; class=&quot;headerlink&quot; title=&quot;下载浏览器&quot;&gt;&lt;/a&gt;下载浏览器&lt;/h4&gt;&lt;p&gt;点击下载&lt;a href=&quot;https://www.coolapk.com/apk/296754&quot;&gt;狐猴浏览器&lt;/a&gt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="bing" scheme="https://xda.plus/tags/bing/"/>
+    
+    <category term="new bing" scheme="https://xda.plus/tags/new-bing/"/>
+    
+    <category term="ai" scheme="https://xda.plus/tags/ai/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CloudFlare的节点</title>
+    <link href="https://xda.plus/2021/10/17/CloudFlare%E7%9A%84%E8%8A%82%E7%82%B9/"/>
+    <id>https://xda.plus/2021/10/17/CloudFlare%E7%9A%84%E8%8A%82%E7%82%B9/</id>
+    <published>2021-10-17T07:44:00.000Z</published>
+    <updated>2026-02-06T06:08:06.348Z</updated>
+    
+    <content type="html"><![CDATA[<p>CloudFlare 百度云合作 ip：</p><blockquote><p>162.159.208.4-162.159.208.103<br>162.159.209.4-162.159.209.103<br>162.159.210.4-162.159.210.103<br>162.159.211.4-162.159.211.103   </p></blockquote><hr><p><a href="https://www.cloudflare.com/zh-cn/ips/">官方列表</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;CloudFlare 百度云合作 ip：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;162.159.208.4-162.159.208.103&lt;br&gt;162.159.209.4-162.159.209.103&lt;br&gt;162.159.210.4-162.159.210.103&lt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="CloudFlare" scheme="https://xda.plus/tags/CloudFlare/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>查看手机剩余电量百分比</title>
+    <link href="https://xda.plus/2020/08/29/%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BA%E5%89%A9%E4%BD%99%E7%94%B5%E9%87%8F%E7%99%BE%E5%88%86%E6%AF%94/"/>
+    <id>https://xda.plus/2020/08/29/%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BA%E5%89%A9%E4%BD%99%E7%94%B5%E9%87%8F%E7%99%BE%E5%88%86%E6%AF%94/</id>
+    <published>2020-08-29T05:00:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>cat /sys/class/power_supply/battery/capacity</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;code&gt;cat /sys/class/power_supply/battery/capacity&lt;/code&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>打开手机的虚拟按键</title>
+    <link href="https://xda.plus/2020/05/09/%E6%89%93%E5%BC%80%E6%89%8B%E6%9C%BA%E7%9A%84%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE/"/>
+    <id>https://xda.plus/2020/05/09/%E6%89%93%E5%BC%80%E6%89%8B%E6%9C%BA%E7%9A%84%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE/</id>
+    <published>2020-05-09T14:16:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>打开<code>/system/build.prop</code><br>在最下面加上<br><code>qemu.hw.mainkeys=0</code><br>保存，重启</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;打开&lt;code&gt;/system/build.prop&lt;/code&gt;&lt;br&gt;在最下面加上&lt;br&gt;&lt;code&gt;qemu.hw.mainkeys=0&lt;/code&gt;&lt;br&gt;保存，重启&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用swap虚拟内存</title>
+    <link href="https://xda.plus/2020/05/09/%E4%BD%BF%E7%94%A8swap%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"/>
+    <id>https://xda.plus/2020/05/09/%E4%BD%BF%E7%94%A8swap%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</id>
+    <published>2020-05-09T14:11:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>-创建一个大约500m的文<br><code># dd if=/dev/zero of=/swapfile bs=1M count=500</code></p><p>-把文件格式化成swap<br><code># mkswap /swapfile</code></p><p>-启用swap<br><code># swapon /swapfile</code></p><p>-支持&#x2F;etc&#x2F;fstab的可以在&#x2F;etc&#x2F;fstab里写入<br><code>/swapfile     swap   swap  rw</code><br>–<code>/swapfile</code>是上面创建的swap文件路径<br>–这样开机就会自动开启swap</p><p>-用free命令检查是否 增加swap<br><code># free</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;-创建一个大约500m的文&lt;br&gt;&lt;code&gt;# dd if=/dev/zero of=/swapfile bs=1M count=500&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;-把文件格式化成swap&lt;br&gt;&lt;code&gt;# mkswap /swapfile&lt;/code&gt;&lt;/p&gt;
+&lt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用adb解开system锁</title>
+    <link href="https://xda.plus/2020/05/09/%E4%BD%BF%E7%94%A8adb%E8%A7%A3%E5%BC%80system%E9%94%81/"/>
+    <id>https://xda.plus/2020/05/09/%E4%BD%BF%E7%94%A8adb%E8%A7%A3%E5%BC%80system%E9%94%81/</id>
+    <published>2020-05-09T13:32:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>adb disable-verity</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;pre&gt;&lt;code&gt;adb disable-verity
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql8修改密码</title>
+    <link href="https://xda.plus/2020/01/12/mysql8%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81/"/>
+    <id>https://xda.plus/2020/01/12/mysql8%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81/</id>
+    <published>2020-01-12T06:57:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;新密码&#x27;</span>;</span><br></pre></td></tr></table></figure><p>优化mysql占用的内存</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="attr">performance_schema_max_table_instances</span>=<span class="number">400</span>  </span><br><span class="line"><span class="attr">table_definition_cache</span>=<span class="number">400</span>  </span><br><span class="line"><span class="attr">table_open_cache</span>=<span class="number">256</span></span><br><span class="line"><span class="attr">performance_schema</span> = <span class="literal">off</span></span><br></pre></td></tr></table></figure><p>重启mysql</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysql</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="Linux" scheme="https://xda.plus/tags/Linux/"/>
+    
+    <category term="Mysql" scheme="https://xda.plus/tags/Mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>提升手机2.4Gwifi连接速度</title>
+    <link href="https://xda.plus/2020/01/12/%E6%8F%90%E5%8D%87%E6%89%8B%E6%9C%BA2.4Gwifi%E8%BF%9E%E6%8E%A5%E9%80%9F%E5%BA%A6/"/>
+    <id>https://xda.plus/2020/01/12/%E6%8F%90%E5%8D%87%E6%89%8B%E6%9C%BA2.4Gwifi%E8%BF%9E%E6%8E%A5%E9%80%9F%E5%BA%A6/</id>
+    <published>2020-01-12T06:43:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>主要有些厂家限制了WiFi的速度，导致不能正常发挥，默认速率为72Mbps，开启后达到150Mbps左右。<br>缺点：40MHz穿墙后没有默认的20MHz稳定，根据自己需求开启吧。</p><p>开启40MHz<br>1.解锁BootLoader<br>2.有ROOT权限<br>3.解锁sytem分区<br>1.用mt管理器打开<code>/vendor/etc/wifi</code><br>2.编辑<code>WCNSS_qcom_cfg.ini</code><br>找到<code>gChannelBondingMode5GHz=1</code><br>在它下方添加一行<code>gChannelBondingMode24GHz=1</code><br>保存重启就可以了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;主要有些厂家限制了WiFi的速度，导致不能正常发挥，默认速率为72Mbps，开启后达到150Mbps左右。&lt;br&gt;缺点：40MHz穿墙后没有默认的20MHz稳定，根据自己需求开启吧。&lt;/p&gt;
+&lt;p&gt;开启40MHz&lt;br&gt;1.解锁BootLoader&lt;br&gt;2.有ROOT权限</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>清理运存</title>
+    <link href="https://xda.plus/2020/01/12/%E6%B8%85%E7%90%86%E8%BF%90%E5%AD%98/"/>
+    <id>https://xda.plus/2020/01/12/%E6%B8%85%E7%90%86%E8%BF%90%E5%AD%98/</id>
+    <published>2020-01-12T06:19:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>$ wget http://one.funs.ml/Termux/kmemory-all.deb</code><br><code>$ dpkg -i kmemory-all.deb</code><br><code>$ kmemory</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;code&gt;$ wget http://one.funs.ml/Termux/kmemory-all.deb&lt;/code&gt;&lt;br&gt;&lt;code&gt;$ dpkg -i kmemory-all.deb&lt;/code&gt;&lt;br&gt;&lt;code&gt;$ kmemory&lt;/code&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>播放终端测试</title>
+    <link href="https://xda.plus/2020/01/12/%E6%92%AD%E6%94%BE%E7%BB%88%E7%AB%AF%E6%B5%8B%E8%AF%95/"/>
+    <id>https://xda.plus/2020/01/12/%E6%92%AD%E6%94%BE%E7%BB%88%E7%AB%AF%E6%B5%8B%E8%AF%95/</id>
+    <published>2020-01-12T06:17:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>!!!</p><link rel="stylesheet" href="//cdn.staticfile.org/asciinema-player/2.6.1/asciinema-player.min.css"><script src="//cdn.staticfile.org/asciinema-player/2.6.1/asciinema-player.min.js"></script><asciinema-player src="//cdn.jsdelivr.net/gh/zfuns/Staticfiles@latest/cast/test.cast" cols="128" rows="17" ></asciinema-player>!!!]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;!!!&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.staticfile.org/asciinema-player/2.6.1/asciinema-player.min.css&quot;&gt;
+&lt;script src=&quot;//cdn.staticfile</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="test" scheme="https://xda.plus/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Termux全套汉化</title>
+    <link href="https://xda.plus/2020/01/12/Termux%E5%85%A8%E5%A5%97%E6%B1%89%E5%8C%96/"/>
+    <id>https://xda.plus/2020/01/12/Termux%E5%85%A8%E5%A5%97%E6%B1%89%E5%8C%96/</id>
+    <published>2020-01-12T06:16:00.000Z</published>
+    <updated>2026-02-06T06:08:06.348Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="App下载"><a href="#App下载" class="headerlink" title="App下载"></a>App下载</h3><ul><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux</a></li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux_widget</a>  </li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux_styling</a></li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux.task</a></li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux.float</a>  </li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux_api</a></li><li><a href="http://api.funs.ml/lzy_dir/api.php?fdir=b0ev7uled">Termux.boot</a></li></ul><h3 id="新地址"><a href="#新地址" class="headerlink" title="新地址"></a>新地址</h3><ul><li><p><a href="https://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb">https://api.funs.ml/lzy_dir/api.php?fdir=b0evwprqb</a>   </p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;App下载&quot;&gt;&lt;a href=&quot;#App下载&quot; class=&quot;headerlink&quot; title=&quot;App下载&quot;&gt;&lt;/a&gt;App下载&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://api.funs.ml/lzy_dir/api.php?fdir=b0e</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Weechat的使用</title>
+    <link href="https://xda.plus/2020/01/12/Weechat%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://xda.plus/2020/01/12/Weechat%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-01-12T06:15:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>输入<code>/help</code>查看使用方法.<br>添加服务器.<br><code>/server add freenode irc.freenode.net</code><br>连接服务器.<br><code>/connect freenode</code><br>注册帐号. (不注册也可以聊)<br><code>/msg NickServ REGISTER 名称 密码 邮箱</code><br>输入时，如果上面名称变成*号说明是以当前默认用户名注册， 改成。<br><code>/msg NickServ REGISTER 密码 邮箱</code><br>改名.<br><code>/nick 新名字</code><br>进入频道.  (频道一般以#开头)<br><code>/join #funs</code><br>和别人开小窗单独聊天.<br><code>/query 昵称|#频道</code><br>离开频道.<br><code>/part</code><br>退出服务器.<br><code>/quit</code></p><h4 id="更多相关命令请百度或谷歌⏎"><a href="#更多相关命令请百度或谷歌⏎" class="headerlink" title="更多相关命令请百度或谷歌⏎"></a>更多相关命令请百度或谷歌⏎</h4>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;输入&lt;code&gt;/help&lt;/code&gt;查看使用方法.&lt;br&gt;添加服务器.&lt;br&gt;&lt;code&gt;/server add freenode irc.freenode.net&lt;/code&gt;&lt;br&gt;连接服务器.&lt;br&gt;&lt;code&gt;/connect freenode&lt;/code&gt;&lt;b</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>查看手机QQ闪照的方法</title>
+    <link href="https://xda.plus/2020/01/12/%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BAQQ%E9%97%AA%E7%85%A7%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>https://xda.plus/2020/01/12/%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BAQQ%E9%97%AA%E7%85%A7%E7%9A%84%E6%96%B9%E6%B3%95/</id>
+    <published>2020-01-12T06:14:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>QQ闪照只能查看几秒钟，但实际上文件已经存在手机里了。</p><p>在文件管理器找到<code>Android/data/com.tencent.mobileqq/Tencent/MobileQQ/chatpic/chatimg/</code>文件夹，里面非常多缓存图片，(删除它，不然等下非常难找闪照),进QQ点击闪照，（别长按,不然会删除掉），在马赛克界面切回文件管理器，进入上面文件夹，每个文件以图片方式打开，应该就能找到闪照的缓存了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;QQ闪照只能查看几秒钟，但实际上文件已经存在手机里了。&lt;/p&gt;
+&lt;p&gt;在文件管理器找到&lt;code&gt;Android/data/com.tencent.mobileqq/Tencent/MobileQQ/chatpic/chatimg/&lt;/code&gt;文件夹，里面非常多缓存图片，</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="android" scheme="https://xda.plus/tags/android/"/>
+    
+    <category term="qq" scheme="https://xda.plus/tags/qq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>获取qq头像</title>
+    <link href="https://xda.plus/2020/01/12/%E8%8E%B7%E5%8F%96qq%E5%A4%B4%E5%83%8F/"/>
+    <id>https://xda.plus/2020/01/12/%E8%8E%B7%E5%8F%96qq%E5%A4%B4%E5%83%8F/</id>
+    <published>2020-01-12T06:13:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>api接口： </code><a href="http://q1.qlogo.cn/g?b=qq&nk=QQ%E5%8F%B7%E7%A0%81&s=640">http://q1.qlogo.cn/g?b=qq&amp;nk=QQ号码&amp;s=640</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;code&gt;api接口： &lt;/code&gt;&lt;a href=&quot;http://q1.qlogo.cn/g?b=qq&amp;nk=QQ%E5%8F%B7%E7%A0%81&amp;s=640&quot;&gt;http://q1.qlogo.cn/g?b=qq&amp;amp;nk=QQ号码&amp;amp;s=640&lt;/a&gt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="api" scheme="https://xda.plus/tags/api/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开启一些常用服务</title>
+    <link href="https://xda.plus/2020/01/12/%E5%BC%80%E5%90%AF%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://xda.plus/2020/01/12/%E5%BC%80%E5%90%AF%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1/</id>
+    <published>2020-01-12T06:12:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>$ <code>busybox telnetd -l bash -p 9000</code><br>$ <code>busybox httpd -p 8080 -h /www</code><br>$ <code>tcpsvd 0 8021 ftpd -w /sdcard &amp;</code><br>$ <code>sshd</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;$ &lt;code&gt;busybox telnetd -l bash -p 9000&lt;/code&gt;&lt;br&gt;$ &lt;code&gt;busybox httpd -p 8080 -h /www&lt;/code&gt;&lt;br&gt;$ &lt;code&gt;tcpsvd 0 8021 ftpd -w /sdcard &amp;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>deb的打包与解包</title>
+    <link href="https://xda.plus/2020/01/12/deb%E7%9A%84%E6%89%93%E5%8C%85%E4%B8%8E%E8%A7%A3%E5%8C%85/"/>
+    <id>https://xda.plus/2020/01/12/deb%E7%9A%84%E6%89%93%E5%8C%85%E4%B8%8E%E8%A7%A3%E5%8C%85/</id>
+    <published>2020-01-12T06:11:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><p><code>mkdir extract</code><br><code>mkdir extract/DEBIAN</code><br><code>mkdir build</code></p><h2 id="解包："><a href="#解包：" class="headerlink" title="解包："></a>解包：</h2><p>解压出包中的文件到extract目录下<br><code>dpkg -X test.deb extract/</code><br>解压出包的控制信息extract&#x2F;DEBIAN&#x2F;目录下<br><code>dpkg -e test.deb extract/DEBIAN/</code> </p><h2 id="打包生成deb包"><a href="#打包生成deb包" class="headerlink" title="打包生成deb包:"></a>打包生成deb包:</h2><p>生成的deb包在build&#x2F;目录下<br><code>dpkg-deb -b extract/ build/</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;准备工作：&quot;&gt;&lt;a href=&quot;#准备工作：&quot; class=&quot;headerlink&quot; title=&quot;准备工作：&quot;&gt;&lt;/a&gt;准备工作：&lt;/h2&gt;&lt;p&gt;&lt;code&gt;mkdir extract&lt;/code&gt;&lt;br&gt;&lt;code&gt;mkdir extract/DEBIAN&lt;/</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>aclock</title>
+    <link href="https://xda.plus/2020/01/12/aclock/"/>
+    <id>https://xda.plus/2020/01/12/aclock/</id>
+    <published>2020-01-12T06:10:00.000Z</published>
+    <updated>2026-02-06T06:08:06.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>Aclock是一个时钟程序，在Termux上编译，您需要下载源代码。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/tenox7/aclock/master/sources/aclock-unix-curses.c</span><br></pre></td></tr></table></figure><p>你还需要ncurses-dev包</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg in ncurses-dev</span><br></pre></td></tr></table></figure><p>现在你只需要编译它</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc aclock-unix-curses.c -o aclock -lncurses -lm</span><br></pre></td></tr></table></figure><p>之后，你可以简单地运行它<br><code>./aclock</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Aclock是一个时钟程序，在Termux上编译，您需要下载源代码。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="默认分类" scheme="https://xda.plus/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="termux" scheme="https://xda.plus/tags/termux/"/>
+    
+    <category term="linux" scheme="https://xda.plus/tags/linux/"/>
+    
+  </entry>
+  
+</feed>

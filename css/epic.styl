@@ -1,0 +1,46 @@
+.pages-epic {
+.list-item {
+    background: var(--content-bg-color);
+    height: auto;
+    border: 1px solid #e6e7eb;
+    border-radius: 4px;
+    margin-bottom:20px;
+    line-height:20px;
+
+    position: relative;
+    page-break-inside:avoid;
+    &:hover {
+        box-shadow:10px 10px 30px 20px rgba(0,0,0,0.05) inset;
+    }
+}
+.list-item a {
+    display: flex;
+    padding: 10px 15px;
+    &:hover {
+        color:var(--text-color);
+    }
+}
+.list-item .list-item-nr {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    & .item-title {
+      font-weight:700;
+      margin:10px 0;
+    }
+    & .item-sub {
+        font-size:0.9em;
+        margin:10px 0;
+    }
+    & .list-item-bar {
+        font-size:0.9em;
+    }
+}
+.list-item-bar {
+    display:flex;
+    & .icon {
+        flex:1;
+        text-align:center
+    }
+}
+}

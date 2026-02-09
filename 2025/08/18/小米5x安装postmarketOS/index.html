@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#fff">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#fff">
+
+<link rel="manifest" href="/funspwa.webmanifest" crossorigin="use-credentials">
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/fontawesomw-pro/releases/v6.0.0-beta3/css/all.css">
+
+<!--<link rel="stylesheet" href="//fastly.jsdelivr.net/gh/zfuns/Staticfiles/lib/fontawesomw-pro/releases/v6.0.0-beta3/css/all.css"></link>-->
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xda.plus","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="安装pmbootstrap工具1234# 有代理可以先配置代理服务加速拉取# export http_proxy&#x3D;&quot;http:&#x2F;&#x2F;10.0.0.102:10808&quot;# export http_proxys&#x3D;&quot;http:&#x2F;&#x2F;10.0.0.102:10808&quot;git clone https:&#x2F;&#x2F;gitlab.postmarketos.org&#x2F;postmarket">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小米5x安装postmarketOS">
+<meta property="og:url" content="https://xda.plus/2025/08/18/%E5%B0%8F%E7%B1%B35x%E5%AE%89%E8%A3%85postmarketOS/index.html">
+<meta property="og:site_name" content="FUNS">
+<meta property="og:description" content="安装pmbootstrap工具1234# 有代理可以先配置代理服务加速拉取# export http_proxy&#x3D;&quot;http:&#x2F;&#x2F;10.0.0.102:10808&quot;# export http_proxys&#x3D;&quot;http:&#x2F;&#x2F;10.0.0.102:10808&quot;git clone https:&#x2F;&#x2F;gitlab.postmarketos.org&#x2F;postmarket">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-08-18T04:13:14.000Z">
+<meta property="article:modified_time" content="2026-02-09T15:16:01.027Z">
+<meta property="article:author" content="zfuns">
+<meta property="article:tag" content="postmarketOS">
+<meta property="article:tag" content="小米5x">
+<meta property="article:tag" content="手机">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xda.plus/2025/08/18/%E5%B0%8F%E7%B1%B35x%E5%AE%89%E8%A3%85postmarketOS/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh'
+  };
+</script>
+
+  <title>小米5x安装postmarketOS | FUNS</title>
+<link rel="alternate" href="/atom.xml" title="FUNS" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+    
+
+<header id="header" class="clearfix">
+<nav id="nav-menu" class="clearfix" role="navigation">
+        <div class="menu-item">
+    <a href="/" title="主页">
+        <i class="fa-solid fa-house-blank"></i>
+    
+    </a>
+    <span>主页</span>
+    </div>
+        <div class="menu-item">
+    <a href="/about" title="关于我">
+        <i class="fa-solid fa-heart"></i>
+    
+    </a>
+    <span>关于我</span>
+    </div>
+        <div class="menu-item">
+    <a href="/links" title="朋友们">
+        <i class="fa-solid fa-user-friends"></i>
+    
+    </a>
+    <span>朋友们</span>
+    </div>
+        <div class="menu-item">
+    <a href="/archives/" title="归档">
+        <i class="fa-solid fa-chart-simple"></i>
+    
+    </a>
+    <span>归档</span>
+    </div>
+        <div class="menu-item">
+    <a href="/github" title="Github">
+        <i class="fa-brands fa-github-alt"></i>
+    
+    </a>
+    <span>Github</span>
+    </div>
+        <div class="menu-item">
+    <a target="_blank" rel="noopener" href="https://travellings.xda.plus" title="开往">
+        <i class="fa-solid fa-o"></i>
+    
+    </a>
+    <span>开往</span>
+    </div>
+        <div class="menu-item">
+    <a href="/search" title="搜索">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    
+    </a>
+    <span>搜索</span>
+    </div>
+</nav>
+</header>
+
+
+
+    
+  <div class="back-to-top">
+    <i class="fa-light fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<div class="cog">
+<i class="fa-light fa-gear fa-spin"></i>
+</div>
+
+    <div id="main" class="pages-post">
+<noscript>抱歉，你的浏览器不支持 JavaScript!</noscript>
+            
+
+  <article class="post">
+    <h1 class="post-title">小米5x安装postmarketOS
+    </h1>
+
+<ul class="post-meta">
+  <li>
+    <span class="icon">
+      <i class="fa-light fa-user"></i>
+    </span>
+    <span>zfuns</span>
+  </li>
+  <li>
+    <span class="icon">
+      <i class="fa-light fa-clock"></i>
+    </span>
+    <time title="" itemprop="dateCreated datePublished" datetime="2025-08-18T12:13:14+08:00">2025-08-18</time>
+  </li>
+  <li>
+    <span class="icon">
+      <i class="fa-light fa-chart-simple"></i>
+    </span>
+      428字
+    </span>
+  </li>
+  <li>
+    <span class="icon">
+      <i class="fa-light fa-hourglass-half"></i>
+    </span>
+    <span>
+    阅读约1分钟
+    </span>
+  </li>
+  <li>
+    <span class="icon">
+      <i class="fa-light fa-folder-minus"></i>
+    </span>
+    <span>
+    <span class="meta-name">
+    分类
+    </span>
+<a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" class="category-link" itemprop="url" rel="index"><span itemprop="name">默认分类</span></a>
+    </span>
+  </li>
+  <li>
+    <span class="icon">
+      <i class="fa-light fa-tag"></i>
+    </span>
+    <span>
+    <span class="meta-name">
+    标签
+    </span>
+<a href="/tags/%E6%89%8B%E6%9C%BA/" class="tags-link" itemprop="url" rel="index"><span itemprop="name">手机</span></a>
+<a href="/tags/postmarketOS/" class="tags-link" itemprop="url" rel="index"><span itemprop="name">postmarketOS</span></a>
+<a href="/tags/%E5%B0%8F%E7%B1%B35x/" class="tags-link" itemprop="url" rel="index"><span itemprop="name">小米5x</span></a>
+    </span>
+  </li>
+</ul>
+
+
+    <div class="post-content" itemprop="articleBody">
+          <h4 id="安装pmbootstrap工具"><a href="#安装pmbootstrap工具" class="headerlink" title="安装pmbootstrap工具"></a>安装pmbootstrap工具</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 有代理可以先配置代理服务加速拉取</span></span><br><span class="line"><span class="comment"># export http_proxy=&quot;http://10.0.0.102:10808&quot;</span></span><br><span class="line"><span class="comment"># export http_proxys=&quot;http://10.0.0.102:10808&quot;</span></span><br><span class="line">git <span class="built_in">clone</span> https://gitlab.postmarketos.org/postmarketOS/pmbootstrap.git</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置pmbootstrap"><a href="#配置pmbootstrap" class="headerlink" title="配置pmbootstrap"></a>配置pmbootstrap</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 可能会缺少一些依赖，按照提示安装即可</span><br><span class="line"># adb, fastboot, git, python3, kpartx，...</span><br><span class="line">cd pmbootstrap</span><br><span class="line">./pmbootstrap.py init</span><br><span class="line"></span><br><span class="line">#&#x27;work&#x27; path: 默认或者自定义路径</span><br><span class="line">#Channel [edge]: edge </span><br><span class="line">#Vendor [qemu]: qcom</span><br><span class="line">#Device codename: msm8953</span><br><span class="line">#Username [user]: #自定义你的ssh用户名或者默认user</span><br><span class="line">#User interface [console]: #选择桌面环境，不需要图形界面就选console或shelli,none,等</span><br><span class="line">#其它选项默认即可</span><br></pre></td></tr></table></figure>
+
+<h5 id="修改默认镜像源为清华源，加快下载速度"><a href="#修改默认镜像源为清华源，加快下载速度" class="headerlink" title="修改默认镜像源为清华源，加快下载速度"></a>修改默认镜像源为清华源，加快下载速度</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./pmbootstrap.py config mirrors.alpine https://mirrors.tuna.tsinghua.edu.cn/alpine/</span><br><span class="line">./pmbootstrap.py config mirrors.pmaports https://mirrors.tuna.tsinghua.edu.cn/postmarketOS/</span><br></pre></td></tr></table></figure>
+<h4 id="创建系统镜像"><a href="#创建系统镜像" class="headerlink" title="创建系统镜像"></a>创建系统镜像</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./pmbootstrap.py install</span><br><span class="line"><span class="comment">#过程中会让你设置ssh密码</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="刷入手机"><a href="#刷入手机" class="headerlink" title="刷入手机"></a>刷入手机</h4><p>手机进入fastboot模式，连接电脑，执行以下命令刷入系统镜像<br>刷前可能需要擦除一下分区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot erase userdata</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">./pmbootstrap.py flasher flash_lk2nd</span><br><span class="line">./pmbootstrap.py flasher flash_rootfs</span><br><span class="line">```   </span><br><span class="line">以上命令如果没效果，可以尝试以下命令</span><br><span class="line"></span><br><span class="line">```sh</span><br><span class="line">./pmbootstrap.py <span class="built_in">export</span> <span class="comment">#导出创建的系统镜像</span></span><br><span class="line">然后用fastboot命令手动刷入</span><br><span class="line">检查是否有这个两个文件</span><br><span class="line">/tmp/postmarketOS-<span class="built_in">export</span>/lk2nd.img</span><br><span class="line">/tmp/postmarketOS-<span class="built_in">export</span>/qcom-msm8953.img</span><br><span class="line"></span><br><span class="line">fastboot flash boot /tmp/postmarketOS-<span class="built_in">export</span>/lk2nd.img</span><br><span class="line">fastboot flash userdata /tmp/postmarketOS-<span class="built_in">export</span>/qcom-msm8953.img</span><br></pre></td></tr></table></figure>
+
+<h4 id="刷入完成后重启手机，进入postmarketOS系统"><a href="#刷入完成后重启手机，进入postmarketOS系统" class="headerlink" title="刷入完成后重启手机，进入postmarketOS系统"></a>刷入完成后重启手机，进入postmarketOS系统</h4><p>手机usb连接电脑后可以通过ssh连接手机，默认用户名是安装过程中设置的，密码也是安装过程中设置的<br>使用ssh 172.16.42.1连接ssh,</p>
+<h4 id="配置wifi"><a href="#配置wifi" class="headerlink" title="配置wifi"></a>配置wifi</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> nmcli device wifi list ifname wlan0</span><br><span class="line">$ <span class="built_in">sudo</span> nmcli device wifi connect <span class="string">&quot;<span class="variable">$SSID</span>&quot;</span> password <span class="string">&quot;<span class="variable">$PASSWORD</span>&quot;</span> ifname <span class="string">&quot;wlan0&quot;</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+    <div class="giscus"></div>
+  </article>
+
+
+  
+
+
+
+            <div id="loadDiv"></div>
+    </div>
+
+<footer class="footer">
+
+
+
+<p><i class="fa-light fa-alien-8bit"></i></p>
+
+2015 –            2026
+<div style="text-align:center; line-height: 20px;font-size: 9pt;">
+<p style="font-size: 8pt;"><small>—— <i class="fa-light fa-copyright"></i> XDA · PLUS ——</small></p>
+</div>
+
+
+
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?779b2cc10ca33f6e14871628e24d6cea";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6724742173449437"
+     crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</footer>
+
+<div id="pjax">
+<script src="/js/default.js"></script>
+
+    
+</div>
+
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  elements: "a",
+  selectors: [
+    'head title',
+    '#main',
+    '#header',
+    '.cog',
+    '#pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:send', () => {
+    console.log('send start');
+    if (document.querySelector('.page-panel') != null){
+    document.querySelector('.page-panel').style.visibility='hidden';
+    loadDiv.innerHTML = _LoadingHtml;
+    }else {
+        console.log('null')
+        }
+        console.log('send end');
+});
+
+window.addEventListener('pjax:complete', () => {
+    console.log('complete');
+});
+
+window.addEventListener('pjax:success', () => {
+    console.log('success')
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+});
+</script>
+
+
+
+
+</body>
+</html>
